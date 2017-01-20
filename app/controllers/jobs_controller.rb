@@ -9,7 +9,6 @@ before_filter :authenticate_user!, only: [:new, :create, :update, :edit, :destro
   def show
     @job = Job.find(params[:id])
   end
-end
 
 def new
     @job = Job.new
@@ -24,13 +23,6 @@ def new
       render :new
     end
   end
-
-  private
-
-  def job_params
-    params.require(:job).permit(:title, :description)
-  end
-
 
   def edit
     @job = Job.find(params[:id])
@@ -52,3 +44,10 @@ def new
 
     redirect_to jobs_path
   end
+
+  private
+
+  def job_params
+    params.require(:job).permit(:title, :description)
+  end
+end
